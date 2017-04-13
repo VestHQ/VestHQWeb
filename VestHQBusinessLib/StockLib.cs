@@ -42,7 +42,7 @@ namespace VestHQBusinessLib
 
             //var random = new Random();
             //var id = random.Next().ToString();
-            var newStock = new Stock()
+            var newStock = new StockPriceHistory()
             {
                 Id = id,
                 Ticker = ticker,

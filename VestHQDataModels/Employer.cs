@@ -7,18 +7,15 @@ using System.Threading.Tasks;
 
 namespace VestHQDataModels
 {
-    public class Stock
+    public class Employer
     {
         [Key]
         public string Id { get; set; }
 
         [StringLength(200)]
-        public string Name { get; set; }
+        public string EmployerName { get; set; }
 
-        [StringLength(4, MinimumLength = 1), Required]
-        public string Symbol { get; set; }
-
-        public ICollection<StockPriceHistory> StockHistories { get; set; }
+        public ICollection<Customer> Customers { get; set; }
 
     }
 }
