@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VestHQDataModels;
+using System.Configuration;
 
 namespace VestHQDAL
 {
     public static class StockDataAccess
     {
         // Need to modify the url to http://vesthqmvp.azurewebsites.net
-        private static string mobileAppUri = @"http://dgvesthqmo.azurewebsites.net";
+        private static string mobileAppUri = ConfigurationManager.AppSettings["VestHQMobileAppUri"];
+        //private static string mobileAppUri = @"http://dgvesthqmo.azurewebsites.net";
         private static MobileServiceClient MobileService = new MobileServiceClient(mobileAppUri);
         private static IMobileServiceTable<StockPriceHistory> stockTable = MobileService.GetTable<StockPriceHistory>();
 

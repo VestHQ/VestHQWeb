@@ -1,6 +1,7 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,10 @@ namespace VestHQDAL
 {
     public class CustomerDataAccess
     {
-        private static string mobileAppUri = @"http://dgvesthqmo.azurewebsites.net";
+        private static string mobileAppUri = ConfigurationManager.AppSettings["VestHQMobileAppUri"];
+        //private static string mobileAppUri = ConfigurationManager.ConnectionStrings["VestHQConnection"].ConnectionString;
+
+        //private static string mobileAppUri = @"http://dgvesthqmo.azurewebsites.net";
         private static MobileServiceClient MobileService = new MobileServiceClient(mobileAppUri);
         private static IMobileServiceTable<Customer> customerTable = MobileService.GetTable<Customer>();
 
