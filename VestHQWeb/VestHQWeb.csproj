@@ -314,6 +314,10 @@
       <Project>{fac57659-d4a6-460b-9e51-013363d1ce8f}</Project>
       <Name>VestHQBusinessLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VestHQDAL\VestHQDAL.csproj">
+      <Project>{40b3c583-7869-49fa-ac05-d244856ee8ad}</Project>
+      <Name>VestHQDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VestHQDataModels\VestHQDataModels.csproj">
       <Project>{2a2dd5e2-51f7-40e5-b6a0-c687a4151cb7}</Project>
       <Name>VestHQDataModels</Name>

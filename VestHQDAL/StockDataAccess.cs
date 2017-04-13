@@ -8,6 +8,7 @@ namespace VestHQDAL
 {
     public static class StockDataAccess
     {
+        // Need to modify the url to http://vesthqmvp.azurewebsites.net
         private static string mobileAppUri = @"http://dgvesthqmo.azurewebsites.net";
         private static MobileServiceClient MobileService = new MobileServiceClient(mobileAppUri);
         private static IMobileServiceTable<Stock> stockTable = MobileService.GetTable<Stock>();
