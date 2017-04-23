@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerDataAccess.cs" />
+    <Compile Include="EmployerDataAccess.cs" />
     <Compile Include="StockDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

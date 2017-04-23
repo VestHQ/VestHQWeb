@@ -22,6 +22,7 @@ namespace VestHQBusinessLib
                 await RefreshCurrentStockPrices(stock.Ticker);
             */
 
+            // TODO: Get stocks from stock table
             await RefreshCurrentStockPrices("MSFT");
             await RefreshCurrentStockPrices("T");
             await RefreshCurrentStockPrices("AAPL");

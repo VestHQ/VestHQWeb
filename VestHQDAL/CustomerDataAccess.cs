@@ -28,9 +28,9 @@ namespace VestHQDAL
             await customerTable.UpdateAsync(customer);
         }
 
-        public static async Task DeleteData(int id)
+        public static async Task DeleteData(string id)
         {
-            var customer = await GetCustomerById(id.ToString());
+            var customer = await GetCustomerById(id);
             await customerTable.DeleteAsync(customer);
         }
 

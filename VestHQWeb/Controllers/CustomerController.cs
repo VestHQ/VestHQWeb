@@ -40,7 +40,7 @@ namespace VestHQWeb.Controllers
         }
 
         // DELETE api/customers/5
-        public async Task Delete(int id)
+        public async Task Delete(string id)
         {
             await CustomerLib.DeleteCustomer(id);
         }

@@ -224,6 +224,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\EmployerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -297,6 +298,12 @@
     <Content Include="Views\Cust\Create.cshtml" />
     <Content Include="Views\Cust\Details.cshtml" />
     <Content Include="Views\Cust\Edit.cshtml" />
+    <Content Include="Views\Employer\Details.cshtml" />
+    <Content Include="Views\Employer\Create.cshtml" />
+    <Content Include="Views\Employer\Edit.cshtml" />
+    <Content Include="Views\Employer\Delete.cshtml" />
+    <Content Include="Views\Employer\Index.cshtml" />
+    <Content Include="Views\Cust\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

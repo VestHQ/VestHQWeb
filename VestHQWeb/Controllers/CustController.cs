@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using VestHQBusinessLib;
 using VestHQDataModels;
@@ -19,6 +20,11 @@ namespace VestHQWeb.Controllers
         public async Task<ActionResult> Details(string id)
         {
             var customer = await CustomerLib.GetCustomer(id.ToString());
+            if (customer == null)
+            {
+                var errorMsg = string.Format("Customer {0} not found.", id);
+                throw new HttpException(404, errorMsg);
+            }
             return View(customer);
         }
 
@@ -37,15 +43,20 @@ namespace VestHQWeb.Controllers
             {
                 var rand = new Random();
                 var id = rand.Next().ToString();
-                //var id = new Guid().ToString();
                 var firstName = collection["FirstName"].ToString();
                 var lastName = collection["LastName"].ToString();
-                var customer = new Customer() { Id = id, FirstName = firstName, LastName = lastName };
+                var customer = new Customer()
+                {
+                    Id = id,
+                    FirstName = firstName,
+                    LastName = lastName,
+                    EmployerId = "1" 
+                };
                 await CustomerLib.InsertCustomer(customer);
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }
@@ -55,6 +66,12 @@ namespace VestHQWeb.Controllers
         public async Task<ActionResult> Edit(string id)
         {
             var customer = await CustomerLib.GetCustomer(id.ToString());
+            if (customer == null)
+            {
+                var errorMsg = string.Format("Customer {0} not found.", id);
+                throw new HttpException(404, errorMsg);
+            }
+
             return View(customer);
         }
 
@@ -66,30 +83,43 @@ namespace VestHQWeb.Controllers
             {
                 var firstName = collection["FirstName"].ToString();
                 var lastName = collection["LastName"].ToString();
-                var customer = new Customer() { Id = id, FirstName = firstName, LastName = lastName };
+                var employeeId = "1";
+                var customer = new Customer()
+                {
+                    Id = id,
+                    FirstName = firstName,
+                    LastName = lastName,
+                    EmployerId = employeeId
+                };
                 await CustomerLib.UpdateCustomer(customer);
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }
         }
 
         // GET: Cust/Delete/5
-        public ActionResult Delete(string id)
+        public async Task<ActionResult> Delete(string id)
         {
-            return View();
+            var customer = await CustomerLib.GetCustomer(id);
+            if (customer == null)
+            {
+                var errorMsg = string.Format("Customer {0} not found.", id);
+                throw new HttpException(404, errorMsg);
+            }
+            return View(customer);
         }
 
         // POST: Cust/Delete/5
         [HttpPost]
-        public ActionResult Delete(string id, FormCollection collection)
+        public async Task<ActionResult> Delete(string id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                await CustomerLib.DeleteCustomer(id);
 
                 return RedirectToAction("Index");
             }

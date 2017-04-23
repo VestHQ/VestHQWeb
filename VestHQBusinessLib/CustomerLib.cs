@@ -20,7 +20,7 @@ namespace VestHQBusinessLib
             await CustomerDataAccess.UpdateData(customer);
         }
 
-        public async static Task DeleteCustomer(int id)
+        public async static Task DeleteCustomer(string id)
         {
             await CustomerDataAccess.DeleteData(id);
         }

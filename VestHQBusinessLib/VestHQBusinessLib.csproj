@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerLib.cs" />
+    <Compile Include="EmployerLib.cs" />
     <Compile Include="StockLib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

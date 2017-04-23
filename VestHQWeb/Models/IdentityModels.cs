@@ -29,5 +29,9 @@ namespace VestHQWeb.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<VestHQDataModels.Employer> Employers { get; set; }
+
+        public System.Data.Entity.DbSet<VestHQDataModels.Customer> Customers { get; set; }
     }
 }
