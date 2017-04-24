@@ -226,7 +226,8 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\EmployerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\StockController.cs" />
+    <Compile Include="Controllers\StockPriceHistoryController.cs" />
+    <Compile Include="Controllers\StockPriceHistoryDataController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -304,6 +305,11 @@
     <Content Include="Views\Employer\Delete.cshtml" />
     <Content Include="Views\Employer\Index.cshtml" />
     <Content Include="Views\Cust\Delete.cshtml" />
+    <Content Include="Views\StockPriceHistories\Create.cshtml" />
+    <Content Include="Views\StockPriceHistories\Delete.cshtml" />
+    <Content Include="Views\StockPriceHistories\Details.cshtml" />
+    <Content Include="Views\StockPriceHistories\Edit.cshtml" />
+    <Content Include="Views\StockPriceHistories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

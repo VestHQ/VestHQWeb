@@ -10,7 +10,7 @@ using VestHQDataModels;
 
 namespace VestHQBusinessLib
 {
-    public class StockLib
+    public class StockPriceHistoryLib
     {
         // Refreshes all of the stock prices
         public async Task RefreshCurrentStockPrices()
@@ -52,7 +52,7 @@ namespace VestHQBusinessLib
             };
 
             // Asynchronously inserts the data
-            await StockDataAccess.InsertData(newStock);
+            await StockPriceHistoryDataAccess.InsertData(newStock);
         }
 
         // Parses an html text twice in order to get the price data
@@ -115,6 +115,33 @@ namespace VestHQBusinessLib
             // This returns the error code and description in case call is unsuccessful
             return "Error: " + response.StatusDescription;
 
+        }
+
+        public async static Task InsertStockPriceHistory(StockPriceHistory stockPriceHistory)
+        {
+            await StockPriceHistoryDataAccess.InsertData(stockPriceHistory);
+        }
+
+        public async static Task UpdateStockPriceHistory(StockPriceHistory stockPriceHistory)
+        {
+            await StockPriceHistoryDataAccess.UpdateData(stockPriceHistory);
+        }
+
+        public async static Task DeleteStockPriceHistory(string id)
+        {
+            await StockPriceHistoryDataAccess.DeleteData(id);
+        }
+
+        public static async Task<List<StockPriceHistory>> GetAllStockPriceHistorys()
+        {
+            var stockPriceHistorys = await StockPriceHistoryDataAccess.GetAllStockPriceHistorys();
+            return stockPriceHistorys;
+        }
+
+        public static async Task<StockPriceHistory> GetStockPriceHistory(string id)
+        {
+            var stockPriceHistory = await StockPriceHistoryDataAccess.GetStockPriceHistoryById(id);
+            return stockPriceHistory;
         }
 
     }

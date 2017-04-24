@@ -5,13 +5,13 @@ using VestHQBusinessLib;
 
 namespace VestHQWeb.Controllers
 {
-    public class StockController : ApiController
+    public class StockPriceHistoryDataController : ApiController
     {
         //public async void PostAsync([FromBody]string value)
         // In case there is a POST request, to API/Stock, we refresh the stock prices
         public async Task PostAsync()
         {
-            var stockLib = new StockLib();
+            var stockLib = new StockPriceHistoryLib();
             await stockLib.RefreshCurrentStockPrices();
         }
 

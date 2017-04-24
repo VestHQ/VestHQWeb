@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="CustomerLib.cs" />
     <Compile Include="EmployerLib.cs" />
-    <Compile Include="StockLib.cs" />
+    <Compile Include="StockPriceHistoryLib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
