@@ -35,5 +35,7 @@ namespace VestHQWeb.Models
         public System.Data.Entity.DbSet<VestHQDataModels.Customer> Customers { get; set; }
 
         public System.Data.Entity.DbSet<VestHQDataModels.StockPriceHistory> StockPriceHistories { get; set; }
+
+        public System.Data.Entity.DbSet<VestHQDataModels.Stock> Stocks { get; set; }
     }
 }

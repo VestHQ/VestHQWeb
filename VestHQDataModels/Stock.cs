@@ -16,7 +16,7 @@ namespace VestHQDataModels
         public string Name { get; set; }
 
         [StringLength(4, MinimumLength = 1), Required]
-        public string Symbol { get; set; }
+        public string Ticker { get; set; }
 
         public ICollection<StockPriceHistory> StockHistories { get; set; }
 
