@@ -7,35 +7,35 @@ using VestHQDataModels;
 
 namespace VestHQWeb.Controllers
 {
-    public class CustController : Controller
+    public class EmployeeController : Controller
     {
-        // GET: Cust
+        // GET: Employee
         public async Task<ActionResult> Index()
         {
-            var customers = await CustomerLib.GetAllCustomers();
-            return View(customers);
+            var employees = await EmployeerLib.GetAllEmployees();
+            return View(employees);
         }
 
-        // GET: Cust/Details/5
+        // GET: Employee/Details/5
         public async Task<ActionResult> Details(string id)
         {
-            var customer = await CustomerLib.GetCustomer(id.ToString());
-            if (customer == null)
+            var employee = await EmployeerLib.GetEmployee(id.ToString());
+            if (employee == null)
             {
-                var errorMsg = string.Format("Customer {0} not found.", id);
+                var errorMsg = string.Format("Employee {0} not found.", id);
                 throw new HttpException(404, errorMsg);
             }
-            return View(customer);
+            return View(employee);
         }
 
-        // GET: Cust/Create
+        // GET: Employee/Create
         public async Task<ActionResult> Create()
         {
-            var customer = new Customer();
-            return View(customer);
+            var employee = new Employee();
+            return View(employee);
         }
 
-        // POST: Cust/Create
+        // POST: Employee/Create
         [HttpPost]
         public async Task<ActionResult> Create(FormCollection collection)
         {
@@ -45,14 +45,15 @@ namespace VestHQWeb.Controllers
                 var id = rand.Next().ToString();
                 var firstName = collection["FirstName"].ToString();
                 var lastName = collection["LastName"].ToString();
-                var customer = new Customer()
+                var employee = new Employee()
                 {
                     Id = id,
                     FirstName = firstName,
                     LastName = lastName,
-                    EmployerId = "1" 
+                    EmployerId = "001",
+                    TwitterAccount = ""
                 };
-                await CustomerLib.InsertCustomer(customer);
+                await EmployeerLib.InsertEmployee(employee);
 
                 return RedirectToAction("Index");
             }
@@ -62,20 +63,20 @@ namespace VestHQWeb.Controllers
             }
         }
 
-        // GET: Cust/Edit/5
+        // GET: Employee/Edit/5
         public async Task<ActionResult> Edit(string id)
         {
-            var customer = await CustomerLib.GetCustomer(id.ToString());
-            if (customer == null)
+            var employee = await EmployeerLib.GetEmployee(id.ToString());
+            if (employee == null)
             {
-                var errorMsg = string.Format("Customer {0} not found.", id);
+                var errorMsg = string.Format("Employee {0} not found.", id);
                 throw new HttpException(404, errorMsg);
             }
 
-            return View(customer);
+            return View(employee);
         }
 
-        // POST: Cust/Edit/5
+        // POST: Employee/Edit/5
         [HttpPost]
         public async Task<ActionResult> Edit(string id, FormCollection collection)
         {
@@ -83,15 +84,17 @@ namespace VestHQWeb.Controllers
             {
                 var firstName = collection["FirstName"].ToString();
                 var lastName = collection["LastName"].ToString();
-                var employeeId = "1";
-                var customer = new Customer()
+                var employeeId = collection["EmployerId"].ToString();
+                var twitterAccount = collection["TwitterAccount"].ToString();
+                var employee = new Employee()
                 {
                     Id = id,
                     FirstName = firstName,
                     LastName = lastName,
-                    EmployerId = employeeId
+                    EmployerId = employeeId,
+                    TwitterAccount = twitterAccount
                 };
-                await CustomerLib.UpdateCustomer(customer);
+                await EmployeerLib.UpdateEmployee(employee);
 
                 return RedirectToAction("Index");
             }
@@ -101,25 +104,25 @@ namespace VestHQWeb.Controllers
             }
         }
 
-        // GET: Cust/Delete/5
+        // GET: Employee/Delete/5
         public async Task<ActionResult> Delete(string id)
         {
-            var customer = await CustomerLib.GetCustomer(id);
-            if (customer == null)
+            var employee = await EmployeerLib.GetEmployee(id);
+            if (employee == null)
             {
-                var errorMsg = string.Format("Customer {0} not found.", id);
+                var errorMsg = string.Format("Employee {0} not found.", id);
                 throw new HttpException(404, errorMsg);
             }
-            return View(customer);
+            return View(employee);
         }
 
-        // POST: Cust/Delete/5
+        // POST: Employee/Delete/5
         [HttpPost]
         public async Task<ActionResult> Delete(string id, FormCollection collection)
         {
             try
             {
-                await CustomerLib.DeleteCustomer(id);
+                await EmployeerLib.DeleteEmployee(id);
 
                 return RedirectToAction("Index");
             }

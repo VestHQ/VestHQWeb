@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace VestHQDataModels
 {
-    public class Customer
+    public class Employee
     {
         [Key]
         public string Id { get; set; }

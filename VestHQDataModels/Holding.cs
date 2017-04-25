@@ -18,11 +18,11 @@ namespace VestHQDataModels
         public string StockId { get; set; }
 
         [Key]
-        [ForeignKey("Customer")]
-        public string CustomerId { get; set; }
+        [ForeignKey("Employee")]
+        public string EmployeeId { get; set; }
 
         public Stock Stock { get; set; }
-        public Customer Customer { get; set; }
+        public Employee Employee { get; set; }
 
         public int SharesOwned { get; set; }
 

@@ -15,7 +15,7 @@ namespace VestHQDataModels
         [StringLength(200)]
         public string EmployerName { get; set; }
 
-        public ICollection<Customer> Customers { get; set; }
+        public ICollection<Employee> Employees { get; set; }
 
     }
 }
