@@ -10,8 +10,8 @@ namespace VestHQDataModels
 {
     public class Holding
     {
-        //[Key]
-        //public string Id { get; set; }
+        [Key]
+        public string Id { get; set; }
 
         [Key]
         [ForeignKey("Stock")]
