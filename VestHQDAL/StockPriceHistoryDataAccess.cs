@@ -41,6 +41,17 @@ namespace VestHQDAL
 
         }
 
+
+        public async static Task<List<StockPriceHistory>> GetStockPriceHistoryByStockId(string stockId)
+        {
+            var stocks = stockPriceHistoryTable.Where(s => s.StockId == stockId);
+
+            var stockPriceHistory = stocks.ToListAsync().Result;
+
+            return stockPriceHistory;
+
+        }
+
         public async static Task<List<StockPriceHistory>> GetAllStockPriceHistorys()
         {
             var prices = stockPriceHistoryTable.Take(10).ToListAsync().Result;
