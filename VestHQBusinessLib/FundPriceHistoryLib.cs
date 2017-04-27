@@ -24,13 +24,13 @@ namespace VestHQBusinessLib
             */
 
             // TODO: Get funds from fund table
-            await RefreshCurrentFundPrices("MSFT");
-            await RefreshCurrentFundPrices("T");
-            await RefreshCurrentFundPrices("AAPL");
+            await RefreshCurrentFundPrices("VTI", "1823329208");
+            await RefreshCurrentFundPrices("VOO", "1238292754");
+            await RefreshCurrentFundPrices("MGC", "674192873");
         }
 
         // Refreshes a single fund price
-        public async static Task RefreshCurrentFundPrices(string ticker)
+        public async static Task RefreshCurrentFundPrices(string ticker, string fundId)
         {
             // Gets the yahoo finance url, gets its html, and parses through it to get the price
             var financeUrl = string.Format("https://finance.yahoo.com/quote/{0}/?p={1}", ticker, ticker);
@@ -44,16 +44,17 @@ namespace VestHQBusinessLib
 
             //var random = new Random();
             //var id = random.Next().ToString();
-            var newFund = new FundPriceHistory()
+            var newFundPriceHistory = new FundPriceHistory()
             {
                 Id = id,
+                FundId = fundId,
                 Ticker = ticker,
                 TickerPrice = price,
                 Time = dateTime
             };
 
             // Asynchronously inserts the data
-            await FundPriceHistoryDataAccess.InsertData(newFund);
+            await FundPriceHistoryDataAccess.InsertData(newFundPriceHistory);
         }
 
         // Parses an html text twice in order to get the price data
