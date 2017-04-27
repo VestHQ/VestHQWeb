@@ -22,6 +22,10 @@ namespace VestHQDataModels
         [StringLength(200)]
         public string TwitterAccount { get; set; }
 
+        [StringLength(1)]
+        public string Gender { get; set; }
+
+
         [ForeignKey("Employer")]
         public string EmployerId { get; set; }
 
