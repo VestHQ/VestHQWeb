@@ -47,10 +47,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VestHQDAL\VestHQDAL.csproj">
-      <Project>{40b3c583-7869-49fa-ac05-d244856ee8ad}</Project>
-      <Name>VestHQDAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\VestHQDataAccess\VestHQDataAccess.csproj">
       <Project>{c6c5275e-ef70-486c-af59-0e07ca5ceb8f}</Project>
       <Name>VestHQDataAccess</Name>

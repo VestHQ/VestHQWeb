@@ -21,11 +21,6 @@ namespace VestHQBusinessLib
             fundList = await FundDataAccess.GetAllFunds();
             foreach (Fund fund in fundList)
                 await RefreshCurrentFundPrices(fund.Ticker, fund.Id);
-
-            // TODO: Get funds from fund table
-            //await RefreshCurrentFundPrices("VTI", "1823329208");
-            //await RefreshCurrentFundPrices("VOO", "1238292754");
-            //await RefreshCurrentFundPrices("MGC", "674192873");
         }
 
         // Refreshes a single fund price
