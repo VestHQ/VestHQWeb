@@ -50,11 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HoldingDataAccess.cs" />
-    <Compile Include="StockDataAccess.cs" />
+    <Compile Include="FundDataAccess.cs" />
     <Compile Include="EmployeeDataAccess.cs" />
     <Compile Include="EmployerDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StockPriceHistoryDataAccess.cs" />
+    <Compile Include="FundPriceHistoryDataAccess.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

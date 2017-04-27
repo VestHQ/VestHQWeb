@@ -11,31 +11,31 @@ using VestHQDataModels;
 
 namespace VestHQBusinessLib
 {
-    public class StockPriceHistoryLib
+    public class FundPriceHistoryLib
     {
-        // Refreshes all of the stock prices
-        public async Task RefreshCurrentStockPrices()
+        // Refreshes all of the fund prices
+        public async Task RefreshCurrentFundPrices()
         {
             /*
-            List<Stock> stockList;
-            stockList = StockDataAccess.GetAllStocks();
-            foreach (Stock stock in stockList)
-                await RefreshCurrentStockPrices(stock.Ticker);
+            List<Fund> fundList;
+            fundList = FundDataAccess.GetAllFunds();
+            foreach (Fund fund in fundList)
+                await RefreshCurrentFundPrices(fund.Ticker);
             */
 
-            // TODO: Get stocks from stock table
-            await RefreshCurrentStockPrices("MSFT");
-            await RefreshCurrentStockPrices("T");
-            await RefreshCurrentStockPrices("AAPL");
+            // TODO: Get funds from fund table
+            await RefreshCurrentFundPrices("MSFT");
+            await RefreshCurrentFundPrices("T");
+            await RefreshCurrentFundPrices("AAPL");
         }
 
-        // Refreshes a single stock price
-        public async static Task RefreshCurrentStockPrices(string ticker)
+        // Refreshes a single fund price
+        public async static Task RefreshCurrentFundPrices(string ticker)
         {
             // Gets the yahoo finance url, gets its html, and parses through it to get the price
             var financeUrl = string.Format("https://finance.yahoo.com/quote/{0}/?p={1}", ticker, ticker);
             string html = GetHtml(financeUrl);
-            double price = GetStockPrice(html);
+            double price = GetFundPrice(html);
 
             // Need to use something in the format of Ticker-Date also put in time
             DateTime dateTime = DateTime.Now;
@@ -44,7 +44,7 @@ namespace VestHQBusinessLib
 
             //var random = new Random();
             //var id = random.Next().ToString();
-            var newStock = new StockPriceHistory()
+            var newFund = new FundPriceHistory()
             {
                 Id = id,
                 Ticker = ticker,
@@ -53,11 +53,11 @@ namespace VestHQBusinessLib
             };
 
             // Asynchronously inserts the data
-            await StockPriceHistoryDataAccess.InsertData(newStock);
+            await FundPriceHistoryDataAccess.InsertData(newFund);
         }
 
         // Parses an html text twice in order to get the price data
-        public static Double GetStockPrice(string html)
+        public static Double GetFundPrice(string html)
         {
             // First regex pass is to reduce it to the previous close area
             var prevClosePattern = "\"previousClose\":{\"raw\":[0-9]*(\\.)[0-9]+";
@@ -118,31 +118,31 @@ namespace VestHQBusinessLib
 
         }
 
-        public async static Task InsertStockPriceHistory(StockPriceHistory stockPriceHistory)
+        public async static Task InsertFundPriceHistory(FundPriceHistory fundPriceHistory)
         {
-            await StockPriceHistoryDataAccess.InsertData(stockPriceHistory);
+            await FundPriceHistoryDataAccess.InsertData(fundPriceHistory);
         }
 
-        public async static Task UpdateStockPriceHistory(StockPriceHistory stockPriceHistory)
+        public async static Task UpdateFundPriceHistory(FundPriceHistory fundPriceHistory)
         {
-            await StockPriceHistoryDataAccess.UpdateData(stockPriceHistory);
+            await FundPriceHistoryDataAccess.UpdateData(fundPriceHistory);
         }
 
-        public async static Task DeleteStockPriceHistory(string id)
+        public async static Task DeleteFundPriceHistory(string id)
         {
-            await StockPriceHistoryDataAccess.DeleteData(id);
+            await FundPriceHistoryDataAccess.DeleteData(id);
         }
 
-        public static async Task<List<StockPriceHistory>> GetAllStockPriceHistorys()
+        public static async Task<List<FundPriceHistory>> GetAllFundPriceHistorys()
         {
-            var stockPriceHistorys = await StockPriceHistoryDataAccess.GetAllStockPriceHistorys();
-            return stockPriceHistorys;
+            var fundPriceHistorys = await FundPriceHistoryDataAccess.GetAllFundPriceHistorys();
+            return fundPriceHistorys;
         }
 
-        public static async Task<StockPriceHistory> GetStockPriceHistory(string id)
+        public static async Task<FundPriceHistory> GetFundPriceHistory(string id)
         {
-            var stockPriceHistory = await StockPriceHistoryDataAccess.GetStockPriceHistoryById(id);
-            return stockPriceHistory;
+            var fundPriceHistory = await FundPriceHistoryDataAccess.GetFundPriceHistoryById(id);
+            return fundPriceHistory;
         }
 
     }

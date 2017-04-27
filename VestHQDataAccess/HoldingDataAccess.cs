@@ -23,7 +23,7 @@ namespace VestHQDataAccess
             var item = await GetHoldingById(holding.Id);
             item.EmployeeId = holding.EmployeeId;
             item.SharesOwned = holding.SharesOwned;
-            item.StockId = holding.StockId;
+            item.FundId = holding.FundId;
             await db.SaveChangesAsync();
         }
 

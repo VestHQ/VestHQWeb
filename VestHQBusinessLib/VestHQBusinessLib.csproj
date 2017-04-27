@@ -42,8 +42,8 @@
   <ItemGroup>
     <Compile Include="EmployeerLib.cs" />
     <Compile Include="EmployerLib.cs" />
-    <Compile Include="StockLib.cs" />
-    <Compile Include="StockPriceHistoryLib.cs" />
+    <Compile Include="FundLib.cs" />
+    <Compile Include="FundPriceHistoryLib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

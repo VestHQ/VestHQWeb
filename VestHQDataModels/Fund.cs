@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VestHQDataModels
 {
-    public class Stock
+    public class Fund
     {
         [Key]
         public string Id { get; set; }
@@ -18,7 +18,7 @@ namespace VestHQDataModels
         [StringLength(4, MinimumLength = 1), Required]
         public string Ticker { get; set; }
 
-        public ICollection<StockPriceHistory> StockHistories { get; set; }
+        public ICollection<FundPriceHistory> FundHistories { get; set; }
 
     }
 }

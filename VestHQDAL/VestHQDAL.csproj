@@ -66,8 +66,8 @@
   <ItemGroup>
     <Compile Include="EmployeeDataAccess.cs" />
     <Compile Include="EmployerDataAccess.cs" />
-    <Compile Include="StockDataAccess.cs" />
-    <Compile Include="StockPriceHistoryDataAccess.cs" />
+    <Compile Include="FundDataAccess.cs" />
+    <Compile Include="FundPriceHistoryDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

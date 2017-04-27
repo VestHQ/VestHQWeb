@@ -1,4 +1,4 @@
-﻿@model VestHQDataModels.Stock
+﻿@model VestHQDataModels.FundPriceHistory
 
 @{
     ViewBag.Title = "Details";
@@ -8,15 +8,15 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Stock</h4>
+    <h4>FundPriceHistory</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Time)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Time)
         </dd>
 
         <dt>
@@ -25,6 +25,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.Ticker)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TickerPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TickerPrice)
         </dd>
 
     </dl>

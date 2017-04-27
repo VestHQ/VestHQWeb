@@ -15,15 +15,15 @@ namespace VestHQDataModels
 
         /*[Key]
         [Column(Order = 0)]*/
-        [ForeignKey("Stock")]
-        public string StockId { get; set; }
+        [ForeignKey("Fund")]
+        public string FundId { get; set; }
 
         /*[Key]
         [Column(Order = 1)]*/
         [ForeignKey("Employee")]
         public string EmployeeId { get; set; }
 
-        public Stock Stock { get; set; }
+        public Fund Fund { get; set; }
         public Employee Employee { get; set; }
 
         public int SharesOwned { get; set; }

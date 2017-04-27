@@ -14,35 +14,35 @@ using VestHQBusinessLib;
 
 namespace VestHQWeb.Controllers
 {
-    public class StockPriceHistoryController : Controller
+    public class FundPriceHistoryController : Controller
     {
-        // GET: StockPriceHistory
+        // GET: FundPriceHistory
         public async Task<ActionResult> Index()
         {
-            var stockPriceHistorys = await StockPriceHistoryLib.GetAllStockPriceHistorys();
-            return View(stockPriceHistorys);
+            var fundPriceHistorys = await FundPriceHistoryLib.GetAllFundPriceHistorys();
+            return View(fundPriceHistorys);
         }
 
-        // GET: StockPriceHistory/Details/5
+        // GET: FundPriceHistory/Details/5
         public async Task<ActionResult> Details(string id)
         {
-            var stockPriceHistory = await StockPriceHistoryLib.GetStockPriceHistory(id.ToString());
-            if (stockPriceHistory == null)
+            var fundPriceHistory = await FundPriceHistoryLib.GetFundPriceHistory(id.ToString());
+            if (fundPriceHistory == null)
             {
-                var errorMsg = string.Format("StockPriceHistory {0} not found.", id);
+                var errorMsg = string.Format("FundPriceHistory {0} not found.", id);
                 throw new HttpException(404, errorMsg);
             }
-            return View(stockPriceHistory);
+            return View(fundPriceHistory);
         }
 
-        // GET: StockPriceHistory/Create
+        // GET: FundPriceHistory/Create
         public async Task<ActionResult> Create()
         {
-            var stockPriceHistory = new StockPriceHistory();
-            return View(stockPriceHistory);
+            var fundPriceHistory = new FundPriceHistory();
+            return View(fundPriceHistory);
         }
 
-        // POST: StockPriceHistory/Create
+        // POST: FundPriceHistory/Create
         [HttpPost]
         public async Task<ActionResult> Create(FormCollection collection)
         {
@@ -53,14 +53,14 @@ namespace VestHQWeb.Controllers
                 var ticker = collection["Ticker"].ToString();
                 var tickerPrice = Convert.ToDouble (collection["Ticker"]);
                 var time = Convert.ToDateTime (collection["Time"]);
-                var stockPriceHistory = new StockPriceHistory()
+                var fundPriceHistory = new FundPriceHistory()
                 {
                     Id = id,
                     Ticker = ticker,
                     TickerPrice = tickerPrice,
                     Time = time
                 };
-                await StockPriceHistoryLib.InsertStockPriceHistory(stockPriceHistory);
+                await FundPriceHistoryLib.InsertFundPriceHistory(fundPriceHistory);
 
                 return RedirectToAction("Index");
             }
@@ -70,19 +70,19 @@ namespace VestHQWeb.Controllers
             }
         }
 
-        // GET: StockPriceHistory/Edit/5
+        // GET: FundPriceHistory/Edit/5
         public async Task<ActionResult> Edit(string id)
         {
-            var stockPriceHistory = await StockPriceHistoryLib.GetStockPriceHistory(id.ToString());
-            if (stockPriceHistory == null)
+            var fundPriceHistory = await FundPriceHistoryLib.GetFundPriceHistory(id.ToString());
+            if (fundPriceHistory == null)
             {
-                var errorMsg = string.Format("StockPriceHistory {0} not found.", id);
+                var errorMsg = string.Format("FundPriceHistory {0} not found.", id);
                 throw new HttpException(404, errorMsg);
             }
-            return View(stockPriceHistory);
+            return View(fundPriceHistory);
         }
 
-        // POST: StockPriceHistory/Edit/5
+        // POST: FundPriceHistory/Edit/5
         [HttpPost]
         public async Task<ActionResult> Edit(string id, FormCollection collection)
         {
@@ -91,7 +91,7 @@ namespace VestHQWeb.Controllers
                 var ticker = collection["Ticker"].ToString();
                 var tickerPrice = Convert.ToDouble(collection["Ticker"]);
                 var time = Convert.ToDateTime(collection["Time"]);
-                var stockPriceHistory = new StockPriceHistory()
+                var fundPriceHistory = new FundPriceHistory()
                 {
                     Id = id,
                     Ticker = ticker,
@@ -99,13 +99,13 @@ namespace VestHQWeb.Controllers
                     Time = time
                 };
 
-                //var stockPriceHistoryName = collection["StockPriceHistoryName"].ToString();
-                //var stockPriceHistory = new StockPriceHistory()
+                //var fundPriceHistoryName = collection["FundPriceHistoryName"].ToString();
+                //var fundPriceHistory = new FundPriceHistory()
                 //{
                 //    Id = id,
-                //    StockPriceHistoryName = stockPriceHistoryName
+                //    FundPriceHistoryName = fundPriceHistoryName
                 //};
-                await StockPriceHistoryLib.UpdateStockPriceHistory(stockPriceHistory);
+                await FundPriceHistoryLib.UpdateFundPriceHistory(fundPriceHistory);
 
                 return RedirectToAction("Index");
             }
@@ -115,25 +115,25 @@ namespace VestHQWeb.Controllers
             }
         }
 
-        // GET: StockPriceHistory/Delete/5
+        // GET: FundPriceHistory/Delete/5
         public async Task<ActionResult> Delete(string id)
         {
-            var stockPriceHistory = await StockPriceHistoryLib.GetStockPriceHistory(id);
-            if (stockPriceHistory == null)
+            var fundPriceHistory = await FundPriceHistoryLib.GetFundPriceHistory(id);
+            if (fundPriceHistory == null)
             {
-                var errorMsg = string.Format("StockPriceHistory {0} not found.", id);
+                var errorMsg = string.Format("FundPriceHistory {0} not found.", id);
                 throw new HttpException(404, errorMsg);
             }
-            return View(stockPriceHistory);
+            return View(fundPriceHistory);
         }
 
-        // POST: StockPriceHistory/Delete/5
+        // POST: FundPriceHistory/Delete/5
         [HttpPost]
         public async Task<ActionResult> Delete(string id, FormCollection collection)
         {
             try
             {
-                await StockPriceHistoryLib.DeleteStockPriceHistory(id);
+                await FundPriceHistoryLib.DeleteFundPriceHistory(id);
 
                 return RedirectToAction("Index");
             }

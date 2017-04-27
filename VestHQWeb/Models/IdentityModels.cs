@@ -35,9 +35,9 @@ namespace VestHQWeb.Models
 
         public System.Data.Entity.DbSet<VestHQDataModels.Employee> Employees { get; set; }
 
-        public System.Data.Entity.DbSet<VestHQDataModels.StockPriceHistory> StockPriceHistories { get; set; }
+        public System.Data.Entity.DbSet<VestHQDataModels.FundPriceHistory> FundPriceHistories { get; set; }
 
-        public System.Data.Entity.DbSet<VestHQDataModels.Stock> Stocks { get; set; }
+        public System.Data.Entity.DbSet<VestHQDataModels.Fund> Funds { get; set; }
     */
     }
 }

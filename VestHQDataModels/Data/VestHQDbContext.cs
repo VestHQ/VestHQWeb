@@ -12,8 +12,8 @@ namespace VestHQDataModels
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Employer> Employers { get; set; }
         public DbSet<Holding> Holdings { get; set; }
-        public DbSet<Stock> Stocks { get; set; }
-        public DbSet<StockPriceHistory> StockPriceHistories { get; set; }
+        public DbSet<Fund> Funds { get; set; }
+        public DbSet<FundPriceHistory> FundPriceHistories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -21,20 +21,20 @@ namespace VestHQDataModels
 
             modelBuilder.Entity<Employer>().ToTable("Employer");
             modelBuilder.Entity<Employee>().ToTable("Employee");
-            modelBuilder.Entity<Stock>().ToTable("Stock");
+            modelBuilder.Entity<Fund>().ToTable("Fund");
             modelBuilder.Entity<Holding>().ToTable("Holding");
-            modelBuilder.Entity<StockPriceHistory>().ToTable("StockPriceHistory");
+            modelBuilder.Entity<FundPriceHistory>().ToTable("FundPriceHistory");
 
             /*
-            modelBuilder.Entity<StockPriceHistory>(entity =>
+            modelBuilder.Entity<FundPriceHistory>(entity =>
             {
                 entity.HasKey(e => e.Id)
                 .ForSqlServerIsClustered(false);
                 
-                entity.HasIndex(e => new { e.StockId, e.Date })
+                entity.HasIndex(e => new { e.FundId, e.Date })
                      .IsUnique()
                      .ForSqlServerIsClustered(true)
-                     .HasName("IX_StockPriceHistory_StockDate");
+                     .HasName("IX_FundPriceHistory_FundDate");
             }); */
         }
     }

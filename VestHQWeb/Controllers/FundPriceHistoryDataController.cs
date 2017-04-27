@@ -5,14 +5,14 @@ using VestHQBusinessLib;
 
 namespace VestHQWeb.Controllers
 {
-    public class StockPriceHistoryDataController : ApiController
+    public class FundPriceHistoryDataController : ApiController
     {
         //public async void PostAsync([FromBody]string value)
-        // In case there is a POST request, to API/Stock, we refresh the stock prices
+        // In case there is a POST request, to API/Fund, we refresh the fund prices
         public async Task PostAsync()
         {
-            var stockLib = new StockPriceHistoryLib();
-            await stockLib.RefreshCurrentStockPrices();
+            var fundLib = new FundPriceHistoryLib();
+            await fundLib.RefreshCurrentFundPrices();
         }
 
         public IEnumerable<string> Get()
@@ -20,7 +20,7 @@ namespace VestHQWeb.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // TODO: Add Get for stock prices
+        // TODO: Add Get for fund prices
         // GET api/values/5
         public string Get(int id)
         {

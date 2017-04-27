@@ -1,4 +1,4 @@
-﻿@model IEnumerable<VestHQDataModels.StockPriceHistory>
+﻿@model IEnumerable<VestHQDataModels.Fund>
 
 @{
     ViewBag.Title = "Index";
@@ -13,13 +13,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Time)
+            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Ticker)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TickerPrice)
         </th>
         <th></th>
     </tr>
@@ -27,13 +24,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Time)
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Ticker)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TickerPrice)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
