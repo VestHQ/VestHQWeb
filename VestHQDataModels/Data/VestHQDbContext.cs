@@ -5,7 +5,7 @@ namespace VestHQDataModels
 {
     public class VestHQDbContext : DbContext
     {
-        public VestHQDbContext(string connectionString= "name=VestHQContext") : base(connectionString)
+        public VestHQDbContext(string connectionString= "name=VestHQConnectionString") : base(connectionString)
         {
         }
 
