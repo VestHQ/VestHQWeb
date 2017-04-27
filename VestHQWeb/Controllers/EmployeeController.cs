@@ -66,6 +66,11 @@ namespace VestHQWeb.Controllers
         // GET: Employee/Edit/5
         public async Task<ActionResult> Edit(string id)
         {
+            if (id == null)
+            {
+                var employees = await EmployeerLib.GetAllEmployees();
+                return View("Index", employees);
+            }
             var employee = await EmployeerLib.GetEmployee(id.ToString());
             if (employee == null)
             {
@@ -84,14 +89,14 @@ namespace VestHQWeb.Controllers
             {
                 var firstName = collection["FirstName"].ToString();
                 var lastName = collection["LastName"].ToString();
-                var employeeId = collection["EmployerId"].ToString();
-                var twitterAccount = collection["TwitterAccount"].ToString();
+                var employerId = collection["EmployerId"]?.ToString();
+                var twitterAccount = collection["TwitterAccount"]?.ToString();
                 var employee = new Employee()
                 {
                     Id = id,
                     FirstName = firstName,
                     LastName = lastName,
-                    EmployerId = employeeId,
+                    EmployerId = employerId,
                     TwitterAccount = twitterAccount
                 };
                 await EmployeerLib.UpdateEmployee(employee);

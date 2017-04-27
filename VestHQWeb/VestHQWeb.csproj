@@ -306,11 +306,11 @@
     <Content Include="Views\Employer\Delete.cshtml" />
     <Content Include="Views\Employer\Index.cshtml" />
     <Content Include="Views\Employee\Delete.cshtml" />
-    <Content Include="Views\StockPriceHistories\Create.cshtml" />
-    <Content Include="Views\StockPriceHistories\Delete.cshtml" />
-    <Content Include="Views\StockPriceHistories\Details.cshtml" />
-    <Content Include="Views\StockPriceHistories\Edit.cshtml" />
-    <Content Include="Views\StockPriceHistories\Index.cshtml" />
+    <Content Include="Views\StockPriceHistory\Create.cshtml" />
+    <Content Include="Views\StockPriceHistory\Delete.cshtml" />
+    <Content Include="Views\StockPriceHistory\Details.cshtml" />
+    <Content Include="Views\StockPriceHistory\Edit.cshtml" />
+    <Content Include="Views\StockPriceHistory\Index.cshtml" />
     <Content Include="Views\Stock\Create.cshtml" />
     <Content Include="Views\Stock\Delete.cshtml" />
     <Content Include="Views\Stock\Details.cshtml" />
