@@ -8,54 +8,58 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using VestHQDataModels;
-using VestHQWeb.Models;
 using VestHQBusinessLib;
 
 namespace VestHQWeb.Controllers
 {
-    public class FundController : Controller
+    public class HoldingController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private VestHQDbContext db = new VestHQDbContext();
 
-        // GET: Funds
+        // GET: Holding
         public async Task<ActionResult> Index()
         {
-            var funds = await FundLib.GetAllFunds();
-            return View(funds);
+            var holdings = await HoldingLib.GetAllHoldings();
+            return View(holdings);
         }
 
-        // GET: Funds/Details/5
+        // GET: Holding/Details/5
         public async Task<ActionResult> Details(string id)
         {
-            var fund = await FundLib.GetFund(id.ToString());
-            if (fund == null)
+            var holding = await HoldingLib.GetHolding(id.ToString());
+            if (holding == null)
             {
-                var errorMsg = string.Format("Fund {0} not found.", id);
+                var errorMsg = string.Format("Holding {0} not found.", id);
                 throw new HttpException(404, errorMsg);
             }
-            return View(fund);
+            return View(holding);
         }
 
-        // GET: Funds/Create
-        public ActionResult Create()
+        // GET: Holding/Create
+        public async Task<ActionResult> Create()
         {
-            var fund = new Fund();
-            return View(fund);
+            var employeesList = await EmployeerLib.GetAllEmployees();
+            var fundsList = await FundLib.GetAllFunds();
+
+            ViewBag.EmployeeId =  new SelectList(employeesList, "Id", "FirstName");
+            ViewBag.FundId = new SelectList(fundsList, "Id", "Name");
+            return View();
+
         }
 
-        // POST: Funds/Create
+        // POST: Holding/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Ticker")] Fund fund)
+        public async Task<ActionResult> Create([Bind(Include = "Id,HoldingId,EmployeeId,FundId,SharesOwned")] Holding holding)
         {
             try
             {
-               var rand = new Random();
+                var rand = new Random();
                 var id = rand.Next().ToString();
-                fund.Id = id;
-                await FundLib.InsertFund(fund);
+                holding.Id = id;
+                await HoldingLib.InsertHolding(holding);
 
                 return RedirectToAction("Index");
             }
@@ -65,28 +69,34 @@ namespace VestHQWeb.Controllers
             }
         }
 
-        // GET: Funds/Edit/5
+        // GET: Holding/Edit/5
         public async Task<ActionResult> Edit(string id)
         {
-            var fund = await FundLib.GetFund(id.ToString());
-            if (fund == null)
+            var employeesList = await EmployeerLib.GetAllEmployees();
+            var fundsList = await FundLib.GetAllFunds();
+
+            ViewBag.EmployeeId = new SelectList(employeesList, "Id", "FirstName");
+            ViewBag.FundId = new SelectList(fundsList, "Id", "Name");
+
+            var holding = await HoldingLib.GetHolding(id.ToString());
+            if (holding == null)
             {
-                var errorMsg = string.Format("Fund {0} not found.", id);
+                var errorMsg = string.Format("Holding {0} not found.", id);
                 throw new HttpException(404, errorMsg);
             }
-            return View(fund);
+            return View(holding);
         }
 
-        // POST: Funds/Edit/5
+        // POST: Holding/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Ticker")] Fund fund)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,HoldingId,EmployeeId,FundId,SharesOwned")] Holding holding)
         {
             try
             {
-                await FundLib.UpdateFund(fund);
+                await HoldingLib.UpdateHolding(holding);
 
                 return RedirectToAction("Index");
             }
@@ -96,26 +106,26 @@ namespace VestHQWeb.Controllers
             }
         }
 
-        // GET: Funds/Delete/5
+        // GET: Holding/Delete/5
         public async Task<ActionResult> Delete(string id)
         {
-            var fund = await FundLib.GetFund(id);
-            if (fund == null)
+            var holding = await HoldingLib.GetHolding(id);
+            if (holding == null)
             {
-                var errorMsg = string.Format("Fund {0} not found.", id);
+                var errorMsg = string.Format("Holding {0} not found.", id);
                 throw new HttpException(404, errorMsg);
             }
-            return View(fund);
+            return View(holding);
         }
 
-        // POST: Funds/Delete/5
+        // POST: Holding/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
             try
             {
-                await FundLib.DeleteFund(id);
+                await HoldingLib.DeleteHolding(id);
 
                 return RedirectToAction("Index");
             }

@@ -43,7 +43,10 @@ namespace VestHQDataAccess
 
         public async static Task<Holding> GetHoldingById(string id)
         {
-            return await db.Holdings.FindAsync(id);
+            var holdings = db.Holdings.Include(h => h.Employee).Include(h => h.Fund);
+            var holding = holdings.Where(h => h.Id == id);
+            return holding.FirstOrDefault();
+            //return await db.Holdings.FindAsync(id);
         }
 
         public async static Task<List<Holding>> GetHoldingByEmployeeId(string employeeId)
@@ -53,7 +56,10 @@ namespace VestHQDataAccess
 
         public async static Task<List<Holding>> GetAllHoldings()
         {
-            return await db.Holdings.AsNoTracking().ToListAsync();
+            //return await db.Holdings.AsNoTracking().ToListAsync();
+
+            return await db.Holdings.Include(h=>h.Employee).Include(h=>h.Fund).AsNoTracking().ToListAsync();
+
         }
     }
 }

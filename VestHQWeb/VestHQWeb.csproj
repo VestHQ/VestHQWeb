@@ -225,11 +225,11 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmployeeDataController.cs" />
     <Compile Include="Controllers\EmployerController.cs" />
+    <Compile Include="Controllers\HoldingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\FundPriceHistoryController.cs" />
     <Compile Include="Controllers\FundPriceHistoryDataController.cs" />
     <Compile Include="Controllers\FundController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -316,6 +316,11 @@
     <Content Include="Views\Fund\Details.cshtml" />
     <Content Include="Views\Fund\Edit.cshtml" />
     <Content Include="Views\Fund\Index.cshtml" />
+    <Content Include="Views\Holding\Delete.cshtml" />
+    <Content Include="Views\Holding\Details.cshtml" />
+    <Content Include="Views\Holding\Edit.cshtml" />
+    <Content Include="Views\Holding\Index.cshtml" />
+    <Content Include="Views\Holding\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
