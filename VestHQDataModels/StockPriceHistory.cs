@@ -17,6 +17,8 @@ namespace VestHQDataModels
         public string Ticker { get; set; }
         public double TickerPrice { get; set; }
 
+        public Stock Stock { get; set; }
+
 
     }
 }

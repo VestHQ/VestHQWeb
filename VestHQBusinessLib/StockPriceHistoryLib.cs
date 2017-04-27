@@ -5,7 +5,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using VestHQDAL;
+//using VestHQDAL;
+using VestHQDataAccess;
 using VestHQDataModels;
 
 namespace VestHQBusinessLib

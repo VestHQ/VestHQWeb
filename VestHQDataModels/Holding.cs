@@ -10,14 +10,16 @@ namespace VestHQDataModels
 {
     public class Holding
     {
-        //[Key]
-        //public string Id { get; set; }
-
         [Key]
+        public string Id { get; set; } 
+
+        /*[Key]
+        [Column(Order = 0)]*/
         [ForeignKey("Stock")]
         public string StockId { get; set; }
 
-        [Key]
+        /*[Key]
+        [Column(Order = 1)]*/
         [ForeignKey("Employee")]
         public string EmployeeId { get; set; }
 
