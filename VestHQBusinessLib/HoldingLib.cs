@@ -37,5 +37,11 @@ namespace VestHQBusinessLib
             return holding;
         }
 
+        public static async Task<List<Holding>> GetHoldingByEmployeeId(string employeeId)
+        {
+            var holdings = await HoldingDataAccess.GetHoldingByEmployeeId(employeeId);
+            return holdings;
+        }
+
     }
 }

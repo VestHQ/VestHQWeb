@@ -23,6 +23,13 @@ namespace VestHQWeb.Controllers
             return View(holdings);
         }
 
+        // GET Holding/EmployeeHoldings/00001
+        public async Task<ActionResult> EmployeeHoldings (string id)
+        {
+            var holdings = await HoldingLib.GetHoldingByEmployeeId(id);
+            return View("Index", holdings);
+        }
+
         // GET: Holding/Details/5
         public async Task<ActionResult> Details(string id)
         {

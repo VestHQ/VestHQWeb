@@ -51,7 +51,11 @@ namespace VestHQDataAccess
 
         public async static Task<List<Holding>> GetHoldingByEmployeeId(string employeeId)
         {
-            return await db.Holdings.Where(s => s.EmployeeId == employeeId).AsNoTracking().ToListAsync();
+            return await db.Holdings
+                .Where(s => s.EmployeeId == employeeId)
+                .Include(h => h.Employee)
+                .Include(h => h.Fund)
+                .AsNoTracking().ToListAsync();
         }
 
         public async static Task<List<Holding>> GetAllHoldings()
