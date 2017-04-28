@@ -18,6 +18,9 @@ namespace VestHQDataModels
         [StringLength(4, MinimumLength = 1), Required]
         public string Ticker { get; set; }
 
+        [StringLength(200)]
+        public string Description { get; set; }
+
         public ICollection<FundPriceHistory> FundHistories { get; set; }
 
     }
