@@ -41,11 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmployeerLib.cs" />
+    <Compile Include="EmployeeSurveyResponseLib.cs" />
     <Compile Include="EmployerLib.cs" />
     <Compile Include="FundLib.cs" />
     <Compile Include="FundPriceHistoryLib.cs" />
     <Compile Include="HoldingLib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SurveyAnswerLib.cs" />
+    <Compile Include="SurveyQuestionLib.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VestHQDataAccess\VestHQDataAccess.csproj">

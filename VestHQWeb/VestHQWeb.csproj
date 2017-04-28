@@ -224,12 +224,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmployeeDataController.cs" />
+    <Compile Include="Controllers\EmployeeSurveyResponseController.cs" />
     <Compile Include="Controllers\EmployerController.cs" />
     <Compile Include="Controllers\HoldingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\FundPriceHistoryController.cs" />
     <Compile Include="Controllers\FundPriceHistoryDataController.cs" />
     <Compile Include="Controllers\FundController.cs" />
+    <Compile Include="Controllers\SurveyQuestionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -321,6 +323,16 @@
     <Content Include="Views\Holding\Edit.cshtml" />
     <Content Include="Views\Holding\Index.cshtml" />
     <Content Include="Views\Holding\Create.cshtml" />
+    <Content Include="Views\SurveyQuestion\Create.cshtml" />
+    <Content Include="Views\SurveyQuestion\Delete.cshtml" />
+    <Content Include="Views\SurveyQuestion\Details.cshtml" />
+    <Content Include="Views\SurveyQuestion\Edit.cshtml" />
+    <Content Include="Views\SurveyQuestion\Index.cshtml" />
+    <Content Include="Views\EmployeeSurveyResponse\Create.cshtml" />
+    <Content Include="Views\EmployeeSurveyResponse\Delete.cshtml" />
+    <Content Include="Views\EmployeeSurveyResponse\Details.cshtml" />
+    <Content Include="Views\EmployeeSurveyResponse\Edit.cshtml" />
+    <Content Include="Views\EmployeeSurveyResponse\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

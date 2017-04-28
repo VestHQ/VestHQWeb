@@ -19,6 +19,8 @@ namespace VestHQDataModels
         [Required]
         public int Order { get; set; }
 
+        //public List<SurveyAnswer> Answers { get; set; }
+
 
     }
 }
