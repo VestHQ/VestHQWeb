@@ -41,7 +41,7 @@ namespace VestHQWeb.Controllers
             var employeesList = await EmployeerLib.GetAllEmployees();
             var fundsList = await FundLib.GetAllFunds();
 
-            ViewBag.EmployeeId =  new SelectList(employeesList, "Id", "FirstName");
+            ViewBag.EmployeeId =  new SelectList(employeesList, "Id", "LastName");
             ViewBag.FundId = new SelectList(fundsList, "Id", "Name");
             return View();
 
@@ -75,15 +75,15 @@ namespace VestHQWeb.Controllers
             var employeesList = await EmployeerLib.GetAllEmployees();
             var fundsList = await FundLib.GetAllFunds();
 
-            ViewBag.EmployeeId = new SelectList(employeesList, "Id", "FirstName");
-            ViewBag.FundId = new SelectList(fundsList, "Id", "Name");
-
             var holding = await HoldingLib.GetHolding(id.ToString());
             if (holding == null)
             {
                 var errorMsg = string.Format("Holding {0} not found.", id);
                 throw new HttpException(404, errorMsg);
             }
+            ViewBag.EmployeeId = new SelectList(employeesList, "Id", "LastName", holding.EmployeeId);
+            ViewBag.FundId = new SelectList(fundsList, "Id", "Name", holding.FundId);
+
             return View(holding);
         }
 

@@ -226,6 +226,7 @@
     <Compile Include="Controllers\EmployeeDataController.cs" />
     <Compile Include="Controllers\EmployerController.cs" />
     <Compile Include="Controllers\HoldingController.cs" />
+    <Compile Include="Controllers\HoldingFooController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\FundPriceHistoryController.cs" />
     <Compile Include="Controllers\FundPriceHistoryDataController.cs" />
@@ -321,6 +322,11 @@
     <Content Include="Views\Holding\Edit.cshtml" />
     <Content Include="Views\Holding\Index.cshtml" />
     <Content Include="Views\Holding\Create.cshtml" />
+    <Content Include="Views\HoldingFoo\Create.cshtml" />
+    <Content Include="Views\HoldingFoo\Delete.cshtml" />
+    <Content Include="Views\HoldingFoo\Details.cshtml" />
+    <Content Include="Views\HoldingFoo\Edit.cshtml" />
+    <Content Include="Views\HoldingFoo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
