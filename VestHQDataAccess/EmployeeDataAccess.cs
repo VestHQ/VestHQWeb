@@ -43,7 +43,10 @@ namespace VestHQDataAccess
 
         public static async Task<Employee> GetEmployeeById(string id)
         {
-            return await db.Employees.FindAsync(id);
+            return db.Employees
+                .Include(e => e.Employer)
+                .Where(e=>e.Id == id)
+                .FirstOrDefault();
 
             /*var employee = await db.Employees.Where(c => c.Id == id).ToListAsync();
             return employee.FirstOrDefault();*/
@@ -51,9 +54,18 @@ namespace VestHQDataAccess
 
         public static async Task<List<Employee>> GetAllEmployees()
         {
-            return await db.Employees.AsNoTracking().ToListAsync();
+            return await db.Employees
+                .Include(e=>e.Employer)
+                .AsNoTracking().ToListAsync();
             //throw new NotImplementedException();
         }
 
+        public static async Task<List<Employee>> GetAllEmployeesForEmployer(string employerId)
+        {
+            return await db.Employees
+                .Include(e => e.Employer)
+                .Where(e=>e.EmployerId == employerId)
+                .AsNoTracking().ToListAsync();
+        }
     }
 }

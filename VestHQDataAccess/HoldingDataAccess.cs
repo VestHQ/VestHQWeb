@@ -43,7 +43,9 @@ namespace VestHQDataAccess
 
         public async static Task<Holding> GetHoldingById(string id)
         {
-            var holdings = db.Holdings.Include(h => h.Employee).Include(h => h.Fund);
+            var holdings = db.Holdings
+                .Include(h => h.Employee)
+                .Include(h => h.Fund);
             var holding = holdings.Where(h => h.Id == id);
             return holding.FirstOrDefault();
             //return await db.Holdings.FindAsync(id);

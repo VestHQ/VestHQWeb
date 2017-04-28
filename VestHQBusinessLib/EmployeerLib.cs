@@ -42,5 +42,9 @@ namespace VestHQBusinessLib
             return employee;
         }
 
+        public static async Task<List<Employee>> GetAllEmployeesForEmployer(string employerId)
+        {
+            return await EmployeeDataAccess.GetAllEmployeesForEmployer(employerId);
+        }
     }
 }

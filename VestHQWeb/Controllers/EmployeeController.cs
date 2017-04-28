@@ -16,6 +16,14 @@ namespace VestHQWeb.Controllers
             return View(employees);
         }
 
+        // GET: EmployerEmployees/001
+        public async Task<ActionResult> EmployerEmployees(string id)
+        {
+            var employees = await EmployeerLib.GetAllEmployeesForEmployer(id);
+            return View("Index", employees);
+        }
+
+
         // GET: Employee/Details/5
         public async Task<ActionResult> Details(string id)
         {
