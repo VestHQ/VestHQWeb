@@ -14,6 +14,9 @@ namespace VestHQDataModels
         public DbSet<Holding> Holdings { get; set; }
         public DbSet<Fund> Funds { get; set; }
         public DbSet<FundPriceHistory> FundPriceHistories { get; set; }
+        public DbSet<SurveyQuestion> SurveyQuestions { get; set; }
+        public DbSet<SurveyAnswer> SurveyAnswers { get; set; }
+        public DbSet<EmployeeSurveyResponse> EmployeeSurveyResponses { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -24,18 +27,10 @@ namespace VestHQDataModels
             modelBuilder.Entity<Fund>().ToTable("Fund");
             modelBuilder.Entity<Holding>().ToTable("Holding");
             modelBuilder.Entity<FundPriceHistory>().ToTable("FundPriceHistory");
+            modelBuilder.Entity<SurveyQuestion>().ToTable("SurveyQuestion");
+            modelBuilder.Entity<SurveyAnswer>().ToTable("SurveyAnswer");
+            modelBuilder.Entity<EmployeeSurveyResponse>().ToTable("EmployeeSurveyResponse");
 
-            /*
-            modelBuilder.Entity<FundPriceHistory>(entity =>
-            {
-                entity.HasKey(e => e.Id)
-                .ForSqlServerIsClustered(false);
-                
-                entity.HasIndex(e => new { e.FundId, e.Date })
-                     .IsUnique()
-                     .ForSqlServerIsClustered(true)
-                     .HasName("IX_FundPriceHistory_FundDate");
-            }); */
         }
     }
 }
